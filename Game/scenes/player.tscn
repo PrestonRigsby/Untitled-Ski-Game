@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://v3n7vdowq7gj"]
+
+[ext_resource type="Texture2D" uid="uid://3j1f0e3nn3g3" path="res://assets/kenney_tiny-ski/Tiles/tile_0083.png" id="1_nmkpl"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_v13um"]
+[ext_resource type="Texture2D" uid="uid://dgju7fdus8nmr" path="res://assets/kenney_tiny-ski/Tiles/tile_0082.png" id="2_iuvn4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nct50"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": ExtResource("1_nmkpl")
+}, {
+"duration": 2.0,
+"texture": ExtResource("2_iuvn4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkpgn"]
+size = Vector2(16, 28)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(576, 200)
+script = ExtResource("1_v13um")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_nct50")
+autoplay = "default"
+frame_progress = 0.857122
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_xkpgn")

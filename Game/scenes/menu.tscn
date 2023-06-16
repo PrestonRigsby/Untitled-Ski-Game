@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=3 uid="uid://cenkfwk0ssffd"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_tvab4"]
+[ext_resource type="FontFile" uid="uid://cyt8dcc5sf1hk" path="res://assets/kenney_kenney-fonts/Fonts/Kenney Pixel Square.ttf" id="2_lcjcv"]
+[ext_resource type="Texture2D" uid="uid://cxuamqjiwxs27" path="res://assets/background.png" id="3_fmg4k"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tvab4")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(580, 322)
+texture = ExtResource("3_fmg4k")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -384.0
+offset_top = 49.0
+offset_right = 385.0
+offset_bottom = 130.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_lcjcv")
+theme_override_font_sizes/font_size = 70
+text = "Untitled Ski Game"
+horizontal_alignment = 1
+
+[node name="Play" type="Button" parent="."]
+modulate = Color(0.811765, 0.905882, 0.968627, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -18.0
+offset_right = 230.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_lcjcv")
+theme_override_font_sizes/font_size = 60
+text = "Play
+"
+
+[node name="Quit" type="Button" parent="."]
+modulate = Color(0.811765, 0.905882, 0.968627, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_top = -149.0
+offset_right = 156.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_lcjcv")
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[node name="QuitConfirm" type="ConfirmationDialog" parent="."]
+title = "Confirm"
+position = Vector2i(475, 274)
+size = Vector2i(252, 100)
+transient = false
+always_on_top = true
+popup_window = true
+dialog_text = "Are you sure you want to quit?"
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="confirmed" from="QuitConfirm" to="." method="_on_quit_confirm_confirmed"]
+[connection signal="script_changed" from="QuitConfirm" to="." method="_on_quit_confirm_script_changed"]

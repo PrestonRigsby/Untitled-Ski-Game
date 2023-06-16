@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=3 uid="uid://b6iyodp2jo1lm"]
+
+[ext_resource type="Script" path="res://scripts/obstacle.gd" id="1_sucwv"]
+[ext_resource type="Texture2D" uid="uid://bc21bwr3wa07p" path="res://assets/kenney_tiny-ski/Tiles/tile_0019.png" id="1_whr67"]
+[ext_resource type="Texture2D" uid="uid://cwt65tw1tag06" path="res://assets/kenney_tiny-ski/Tiles/tile_0018.png" id="2_4ag3n"]
+[ext_resource type="Texture2D" uid="uid://dr5u6sdv74bkl" path="res://assets/kenney_tiny-ski/Tiles/tile_0006.png" id="3_b8pmu"]
+[ext_resource type="Texture2D" uid="uid://l5qkj0kte1m0" path="res://assets/kenney_tiny-ski/Tiles/tile_0007.png" id="4_7u8hi"]
+[ext_resource type="Texture2D" uid="uid://x8jqj7juve7y" path="res://assets/kenney_tiny-ski/Tiles/tile_0030.png" id="5_eaxe2"]
+[ext_resource type="Texture2D" uid="uid://d3fap8xjfcbgh" path="res://assets/kenney_tiny-ski/Tiles/tile_0047.png" id="6_reohs"]
+[ext_resource type="AudioStream" uid="uid://03bobofjbwng" path="res://assets/wav/grunt.wav" id="8_plykj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wn7l0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_whr67")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4ag3n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_b8pmu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7u8hi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_eaxe2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_reohs")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rphe7"]
+
+[node name="Obstacle" type="Area2D"]
+script = ExtResource("1_sucwv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_wn7l0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_rphe7")
+
+[node name="Grunt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_plykj")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

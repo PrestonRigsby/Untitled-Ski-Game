@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://deuk7xr03hqgr"]
+
+[ext_resource type="FontFile" uid="uid://dx4wkdn8ij4gu" path="res://assets/kenney_kenney-fonts/Fonts/Kenney Rocket Square.ttf" id="1_ow1qv"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Time" type="Label" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 5.0
+offset_right = 345.0
+offset_bottom = 84.0
+theme_override_colors/font_color = Color(0.14902, 0.443137, 0.54902, 1)
+theme_override_fonts/font = ExtResource("1_ow1qv")
+theme_override_font_sizes/font_size = 50
+text = "999"
